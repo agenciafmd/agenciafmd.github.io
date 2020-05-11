@@ -1,6 +1,6 @@
 title: Boas Práticas
 logo: /assets/img/logo.png
 description: Manual de boas práticas com exemplos.
-show_downloads: true
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
