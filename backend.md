@@ -10,7 +10,7 @@ A idéia deste documento, é manter toda a equipe atualizada sobre as boas prát
 
 - [Laravel](#laravel)
     - [Models Gordas, Controllers Magros](#models-gordas-controllers-magros)
-    - [Validação](#validacao)
+    - [Validação](#validao)
     - [Mova a logica de negocios para o Service](#mova-a-logica-de-negocios-para-o-service)
     - [DRY (Don't Repeat Yourself)](#dry-dont-repeat-yourself)
     - [Mass Assignment](#mass-assignment)
@@ -22,6 +22,7 @@ A idéia deste documento, é manter toda a equipe atualizada sobre as boas prát
 
 ## Laravel 
 
+<a name="models-gordas-controllers-magros"></a>
 ### Models Gordas, Controllers Magros
 
 Mova a lógica do banco para a model.
