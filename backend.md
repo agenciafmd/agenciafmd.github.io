@@ -141,7 +141,8 @@ class PostRequest extends Request
                 'required',
             ],
             'publish_at' => [
-                'nullable|date',
+                'nullable', 
+                'date',
             ],
         ];
     }
