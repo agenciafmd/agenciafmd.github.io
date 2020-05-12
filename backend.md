@@ -4,40 +4,59 @@ description: Boas práticas para o desenvolvimento
 rank: 2
 ---
 
-## Welcome to GitHub Pages
+## Boas práticas para o desenvolvimento
 
-You can use the [editor on GitHub](https://github.com/agenciafmd/agenciafmd.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+A idéia deste documento, é manter toda a equipe atualizada sobre as boas práticas / funcionalidades aplicadas no desenvolvimento.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- [Laravel](#laravel)
+    - [Models Gordas, Controllers Magros](#models-gordas-controllers-magros)
 
-### Markdown
+## Laravel 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Models Gordas, Controllers Magros
 
-```markdown
-Syntax highlighted code block
+Coloque toda a lógica relacionada a banco em modelos Eloquent ou em repositórios caso você esteja usando Query Builder ou consultas SQL.
 
-# Header 1
-## Header 2
-### Header 3
+Ruim:
 
-- Bulleted
-- List
+```php
+public function index()
+{
+    $views['clients'] = Client::verified()
+        ->with(['orders' => function ($q) {
+            $q->where('created_at', '>', Carbon::today()->subWeek());
+        }])
+        ->get();
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+    return view('agenciafmd/frontend::pages.index', $views);
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Bom:
 
-### Jekyll Themes
+```php
+public function index()
+{
+    $views['clients'] = Client::getWithNewOrders();
+    
+    return view('agenciafmd/frontend::pages.index', $views);
+}
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/agenciafmd/agenciafmd.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+class Client extends Model
+{
+    public function getWithNewOrders()
+    {
+        return $this->verified()
+            ->with(['orders' => function ($q) {
+                $q->where('created_at', '>', Carbon::today()->subWeek());
+            }])
+            ->get();
+    }
+}
+```
 
-### Support or Contact
+[🔝Voltar](#laravel)
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Fonte
+
+https://github.com/jonaselan/laravel-best-practices
