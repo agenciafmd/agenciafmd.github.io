@@ -22,7 +22,7 @@ A idéia deste documento, é manter toda a equipe atualizada sobre as boas prát
 
 ## Laravel 
 
-### [Siga a convenção de nomes usada no Laravel](#siga-a-convenção-de-nomes-usada-no-laravel)
+### Siga a convenção de nomes usada no Laravel
 
 Siga também a convenção de nomes aceita pela comunidade Laravel:
 
@@ -55,7 +55,7 @@ Trait | adjective | Notifiable | ~~NotificationTrait~~
 
 [Voltar](#laravel)
 
-### [Models Gordas, Controllers Magros](#models-gordas-controllers-magros)
+### Models Gordas, Controllers Magros
 
 Mova a lógica do banco para a model.
 
@@ -99,7 +99,7 @@ class Client extends Model
 
 [Voltar](#laravel)
 
-### [Validação](#validação)
+### Validação
 
 - Utilize as classes de Request ao invés do validade na Controller
 - Não separe os validadores por pipe, dê preferência para o array
@@ -151,7 +151,7 @@ class PostRequest extends Request
 
 [Voltar](#laravel)
 
-### [Mova a logica de negocios para o Service](#mova-a-logica-de-negocios-para-o-service)
+### Mova a logica de negocios para o Service
 
 Controller devem ter somente uma responsabilidade, então mova lógica de negócio para outros serviços.
 
@@ -193,7 +193,7 @@ class ArticleService
 
 [Voltar](#laravel)
 
-### [DRY (Don't Repeat Yourself)](#dry-dont-repeat-yourself)
+### DRY (Don't Repeat Yourself)
 
 Reutilize seu código sempre que possível. A ideia da responsabilidade única ajuda você a evitar duplicação. Isso serve também para templates Blade.
 
@@ -241,7 +241,7 @@ public function getArticles()
 
 [Voltar](#laravel)
 
-### [Mass Assignment](#mass-assignment)
+### Mass Assignment
 
 Dê preferencia para o Mass Assignment
 
@@ -266,7 +266,7 @@ $category->article()
 
 [Voltar](#laravel)
 
-### [Queries na view](#queries-na-view)
+### Queries na view
 
 Evite utilizar queries na view
 
@@ -292,7 +292,7 @@ $view['users'] = User::get();
 
 [Voltar](#laravel)
 
-### [Eager Loading e N+1](#eager-loading-e-n1)
+### Eager Loading e N+1
 
 Utilize o Eager Loading para evitar queries N+1
 
@@ -323,7 +323,7 @@ $view['users'] = User::with('profile')
 
 [Voltar](#laravel)
 
-### [Use sintaxes pequenas e legíveis](#use-sintaxes-pequenas-e-legveis)
+### Use sintaxes pequenas e legíveis
 
 Ruim:
 
@@ -358,7 +358,7 @@ Sintaxe comum | Pequena e mais legíveis
 
 [Voltar](#laravel)
 
-### [Não recupere informações diretamente do `.env`](#nao-recupere-informações-diretamente-do-env)
+### Não recupere informações diretamente do `.env`
 
 Coloque os dados em arquivos de configuração e recupere através do helper `config()`.
 
