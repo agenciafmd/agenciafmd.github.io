@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Requests
+title: Validação
 parent: Backend
 nav_order: 1
 ---
 
-# Requests
+# Validação
 {: .no_toc }
 
 ## Indice
@@ -16,7 +16,7 @@ nav_order: 1
 
 ---
 
-## Utilize as classes de Request ao invés do validade na Controller
+## Não valide na Controller, utilize o Request
 
 Ruim:
 
@@ -63,7 +63,7 @@ class PostRequest extends Request
 }
 ```
 
-## Não separe os validadores por pipe, dê preferência para o array
+## Não separe os validadores por pipe, utilize o array
 
 Ruim:
 
@@ -109,3 +109,60 @@ class PostRequest extends Request
     }
 }
 ```
+
+## Não esqueça da bag do formulário
+
+Para o admix, utilize sempre o admix
+
+```php
+protected $errorBag = 'admix';
+```
+
+Para o front, utilize sempre o nome do formulário
+
+```php
+protected $errorBag = 'contacts';
+```
+
+## Traduza os atributos
+
+```php
+public function attributes()
+{
+    return [
+        'title' => 'título',
+        'body' => 'texto',
+        'publish_at' => 'data de publicação'
+    ];
+}
+```
+
+## Traduza as mensagens somente em último caso
+
+Ruim:
+
+```php
+public function messages()
+{
+    return [
+        'required' => 'Este campo em especial é obrigatório',
+        'title.required' => 'O campo titulo é obrigatório',
+        'date_format' => 'A data de nascimento é inválida',
+    ];
+}
+```
+
+Bom:
+
+```php
+public function messages()
+{
+    return [
+        'dob.date_format' => 'Data de nascimento não confere com o formato Y-m-d.',
+    ];
+}
+```
+
+
+
+
