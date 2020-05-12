@@ -22,7 +22,7 @@ A idéia deste documento, é manter toda a equipe atualizada sobre as boas prát
 
 ## Laravel 
 
-### Siga a convenção de nomes usada no Laravel <a name="siga-a-convenção-de-nomes-usada-no-laravel"></a>
+### Siga a convenção de nomes usada no Laravel [🔗](#siga-a-convenção-de-nomes-usada-no-laravel)
 
 Siga também a convenção de nomes aceita pela comunidade Laravel:
 
