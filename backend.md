@@ -9,21 +9,53 @@ rank: 2
 A idéia deste documento, é manter toda a equipe atualizada sobre as boas práticas / funcionalidades aplicadas no desenvolvimento.
 
 - [Laravel](#laravel)
+    - [Siga a convenção de nomes usada no Laravel](#siga-a-convenção-de-nomes-usada-no-laravel)
     - [Models Gordas, Controllers Magros](#models-gordas-controllers-magros)
-    - [Validação](#validao)
+    - [Validação](#validação)
     - [Mova a logica de negocios para o Service](#mova-a-logica-de-negocios-para-o-service)
     - [DRY (Don't Repeat Yourself)](#dry-dont-repeat-yourself)
     - [Mass Assignment](#mass-assignment)
     - [Queries na view](#queries-na-view)
     - [Eager Loading e N+1](#eager-loading-e-n1)
-    - [Siga a convenção de nomes usada no Laravel](#siga-a-convencao-de-nomes-usada-no-laravel)
     - [Tente sempre usar sintaxes pequenas e legíveis](#tente-sempre-usar-sintaxes-pequenas-e-legveis)
-    - [Não recupere informações diretamente do `.env`](#nao-recupere-informacoes-diretamente-do-env)
+    - [Não recupere informações diretamente do `.env`](#nao-recupere-informações-diretamente-do-env)
 
 ## Laravel 
 
-<a name="models-gordas-controllers-magros"></a>
-### Models Gordas, Controllers Magros
+### Siga a convenção de nomes usada no Laravel <a name="siga-a-convenção-de-nomes-usada-no-laravel"></a>
+
+Siga também a convenção de nomes aceita pela comunidade Laravel:
+
+O que | Como | Bom | Ruim
+------------ | ------------- | ------------- | -------------
+Controller | singular | ArticleController | ~~ArticlesController~~
+Rotas | plural | articles/1 | ~~article/1~~
+Rotas nomeadas | snake_case com dot notation | users.show_active | ~~users.show-active, show-active-users~~
+Model | singular | User | ~~Users~~
+Relacionamentos hasOne ou belongsTo | singular | articleComment | ~~articleComments, article_comment~~
+Outros relacionamentos | plural | articleComments | ~~articleComment, article_comments~~
+Table | plural | article_comments | ~~article_comment, articleComments~~
+Pivot table | models no singular em ordem alfabética | article_user | ~~user_article, articles_users~~
+Colunas em tabelas | snake_case sem o nome da model | meta_title | ~~MetaTitle; article_meta_title~~
+Propriedades da model | snake_case | $model->created_at | ~~$model->createdAt~~
+Chaves estrangeiras | nome da model no singular com o sufixo _id | article_id | ~~ArticleId, id_article, articles_id~~
+Chaves primárias | - | id | ~~custom_id~~
+Migrações | - | 2017_01_01_000000_create_articles_table | ~~2017_01_01_000000_articles~~
+Métodos | camelCase | getAll | ~~get_all~~
+Métodos em controllers | [table](https://laravel.com/docs/master/controllers#resource-controllers) | store | ~~saveArticle~~
+Métodos e classes de teste | camelCase | testGuestCannotSeeArticle | ~~test_guest_cannot_see_article~~
+Variáveis | camelCase | $articlesWithAuthor | ~~$articles_with_author~~
+Collection | descritivo, plural | $activeUsers = User::active()->get() | ~~$active, $data~~
+Object | descritivo, singular | $activeUser = User::active()->first() | ~~$users, $obj~~
+Config e arquivos de linguagem | snake_case | articles_enabled | ~~ArticlesEnabled; articles-enabled~~
+View | kebab-case | show-filtered.blade.php | ~~showFiltered.blade.php, show_filtered.blade.php~~
+Config | snake_case | google_calendar.php | ~~googleCalendar.php, google-calendar.php~~
+Contract (interface) | adjetivo ou nome | Authenticatable | ~~AuthenticationInterface, IAuthentication~~
+Trait | adjective | Notifiable | ~~NotificationTrait~~
+
+[Voltar](#laravel)
+
+### Models Gordas, Controllers Magros <a name="models-gordas-controllers-magros"></a>
 
 Mova a lógica do banco para a model.
 
@@ -67,10 +99,10 @@ class Client extends Model
 
 [Voltar](#laravel)
 
-### Validação
+### Validação <a name="validação"></a>
 
 - Utilize as classes de Request ao invés do validade na Controller
-- Não separe os validadores por pipe (|), dê preferência para o array
+- Não separe os validadores por pipe, dê preferência para o array
 
 Ruim:
 
@@ -290,39 +322,6 @@ $view['users'] = User::with('profile')
 
 [Voltar](#laravel)
 
-### Siga a convenção de nomes usada no Laravel
-
-Siga também a convenção de nomes aceita pela comunidade Laravel:
-
-O que | Como | Bom | Ruim
------------- | ------------- | ------------- | -------------
-Controller | singular | ArticleController | ~~ArticlesController~~
-Rotas | plural | articles/1 | ~~article/1~~
-Rotas nomeadas | snake_case com dot notation | users.show_active | ~~users.show-active, show-active-users~~
-Model | singular | User | ~~Users~~
-Relacionamentos hasOne ou belongsTo | singular | articleComment | ~~articleComments, article_comment~~
-Outros relacionamentos | plural | articleComments | ~~articleComment, article_comments~~
-Table | plural | article_comments | ~~article_comment, articleComments~~
-Pivot table | models no singular em ordem alfabética | article_user | ~~user_article, articles_users~~
-Colunas em tabelas | snake_case sem o nome da model | meta_title | ~~MetaTitle; article_meta_title~~
-Propriedades da model | snake_case | $model->created_at | ~~$model->createdAt~~
-Chaves estrangeiras | nome da model no singular com o sufixo _id | article_id | ~~ArticleId, id_article, articles_id~~
-Chaves primárias | - | id | ~~custom_id~~
-Migrações | - | 2017_01_01_000000_create_articles_table | ~~2017_01_01_000000_articles~~
-Métodos | camelCase | getAll | ~~get_all~~
-Métodos em controllers | [table](https://laravel.com/docs/master/controllers#resource-controllers) | store | ~~saveArticle~~
-Métodos e classes de teste | camelCase | testGuestCannotSeeArticle | ~~test_guest_cannot_see_article~~
-Variáveis | camelCase | $articlesWithAuthor | ~~$articles_with_author~~
-Collection | descritivo, plural | $activeUsers = User::active()->get() | ~~$active, $data~~
-Object | descritivo, singular | $activeUser = User::active()->first() | ~~$users, $obj~~
-Config e arquivos de linguagem | snake_case | articles_enabled | ~~ArticlesEnabled; articles-enabled~~
-View | kebab-case | show-filtered.blade.php | ~~showFiltered.blade.php, show_filtered.blade.php~~
-Config | snake_case | google_calendar.php | ~~googleCalendar.php, google-calendar.php~~
-Contract (interface) | adjetivo ou nome | Authenticatable | ~~AuthenticationInterface, IAuthentication~~
-Trait | adjective | Notifiable | ~~NotificationTrait~~
-
-[Voltar](#laravel)
-
 ### Tente sempre usar sintaxes pequenas e legíveis
 
 Ruim:
@@ -379,7 +378,6 @@ $apiKey = config('api.key');
 ```
 
 [Voltar](#laravel)
-
 
 
 ### Fonte
