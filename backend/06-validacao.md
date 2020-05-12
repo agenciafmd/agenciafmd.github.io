@@ -2,7 +2,8 @@
 layout: default
 title: Validação
 parent: Backend
-nav_order: 1
+permalink: /backend/validacao
+nav_order: 6
 ---
 
 # Validação
@@ -16,7 +17,7 @@ nav_order: 1
 
 ---
 
-## Não valide na Controller, utilize o Request
+### Não valide na Controller, utilize o Request
 
 Ruim:
 
@@ -63,7 +64,9 @@ class PostRequest extends Request
 }
 ```
 
-## Não separe os validadores por pipe, utilize o array
+---
+
+### Não separe os validadores por pipe, utilize o array
 
 Ruim:
 
@@ -110,7 +113,9 @@ class PostRequest extends Request
 }
 ```
 
-## Não esqueça da bag do formulário
+---
+
+### Não esqueça da bag do formulário
 
 Para o admix, utilize sempre o admix
 
@@ -124,7 +129,9 @@ Para o front, utilize sempre o nome do formulário
 protected $errorBag = 'contacts';
 ```
 
-## Traduza os atributos
+---
+
+### Traduza os atributos
 
 ```php
 public function attributes()
@@ -136,6 +143,8 @@ public function attributes()
     ];
 }
 ```
+
+---
 
 ## Traduza as mensagens somente em último caso
 
@@ -163,6 +172,4 @@ public function messages()
 }
 ```
 
-
-
-
+---
