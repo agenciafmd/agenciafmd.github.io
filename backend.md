@@ -17,7 +17,7 @@ A idéia deste documento, é manter toda a equipe atualizada sobre as boas prát
     - [Mass Assignment](#mass-assignment)
     - [Queries na view](#queries-na-view)
     - [Eager Loading e N+1](#eager-loading-e-n1)
-    - [Tente sempre usar sintaxes pequenas e legíveis](#tente-sempre-usar-sintaxes-pequenas-e-legveis)
+    - [Use sintaxes pequenas e legíveis](#use-sintaxes-pequenas-e-legíveis)
     - [Não recupere informações diretamente do `.env`](#nao-recupere-informações-diretamente-do-env)
 
 ## Laravel 
@@ -55,7 +55,7 @@ Trait | adjective | Notifiable | ~~NotificationTrait~~
 
 [Voltar](#laravel)
 
-### Models Gordas, Controllers Magros <a name="models-gordas-controllers-magros"></a>
+### [Models Gordas, Controllers Magros](#models-gordas-controllers-magros)
 
 Mova a lógica do banco para a model.
 
@@ -99,7 +99,7 @@ class Client extends Model
 
 [Voltar](#laravel)
 
-### Validação <a name="validação"></a>
+### [Validação](#validação)
 
 - Utilize as classes de Request ao invés do validade na Controller
 - Não separe os validadores por pipe, dê preferência para o array
@@ -151,7 +151,7 @@ class PostRequest extends Request
 
 [Voltar](#laravel)
 
-### Mova a logica de negocios para o Service
+### [Mova a logica de negocios para o Service](#mova-a-logica-de-negocios-para-o-service)
 
 Controller devem ter somente uma responsabilidade, então mova lógica de negócio para outros serviços.
 
@@ -193,7 +193,7 @@ class ArticleService
 
 [Voltar](#laravel)
 
-### DRY (Don't Repeat Yourself)
+### [DRY (Don't Repeat Yourself)](#dry-dont-repeat-yourself)
 
 Reutilize seu código sempre que possível. A ideia da responsabilidade única ajuda você a evitar duplicação. Isso serve também para templates Blade.
 
@@ -241,7 +241,7 @@ public function getArticles()
 
 [Voltar](#laravel)
 
-### Mass Assignment
+### [Mass Assignment](#mass-assignment)
 
 Dê preferencia para o Mass Assignment
 
@@ -266,7 +266,7 @@ $category->article()
 
 [Voltar](#laravel)
 
-### Queries na view
+### [Queries na view](#queries-na-view)
 
 Evite utilizar queries na view
 
@@ -292,7 +292,7 @@ $view['users'] = User::get();
 
 [Voltar](#laravel)
 
-### Eager Loading e N+1
+### [Eager Loading e N+1](#eager-loading-e-n1)
 
 Utilize o Eager Loading para evitar queries N+1
 
@@ -323,7 +323,7 @@ $view['users'] = User::with('profile')
 
 [Voltar](#laravel)
 
-### Tente sempre usar sintaxes pequenas e legíveis
+### [Use sintaxes pequenas e legíveis](#use-sintaxes-pequenas-e-legveis)
 
 Ruim:
 
@@ -358,7 +358,7 @@ Sintaxe comum | Pequena e mais legíveis
 
 [Voltar](#laravel)
 
-### Não recupere informações diretamente do `.env`
+### [Não recupere informações diretamente do `.env`](#nao-recupere-informações-diretamente-do-env)
 
 Coloque os dados em arquivos de configuração e recupere através do helper `config()`.
 
@@ -379,7 +379,6 @@ $apiKey = config('api.key');
 ```
 
 [Voltar](#laravel)
-
 
 ### Fonte
 
