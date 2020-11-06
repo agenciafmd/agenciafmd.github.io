@@ -3,5 +3,5 @@ description: Manual de boas práticas e exemplos.
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-slate
-github:
-  is_project_page: false
+plugins:
+  - jemoji

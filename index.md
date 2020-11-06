@@ -11,9 +11,9 @@ Os itens marcados com :warning: não seguem a convenção do laravel
 
 Singular acompanhada do sufixo `Controller`
 
-```
-ArticleController
-LeadController 
+```php
+ArticleController::class
+LeadController::class
 ```
 
 ### Rota
@@ -28,14 +28,19 @@ LeadController
 - Utilizar o nome do método (camelCase)
 - Para palavras compostas, utilizar camelCase
 
-Obs. Somente a rota da home, deveremos omitir o metodo index.
+***Somente a rota da home, deveremos omitir a `FrontendController::class`.***
 
-```
-frontend.index
-frontend.contact.index
-frontend.faq.index
-frontend.contactUs.show
-frontend.contactUs.sendMessage
+```php
+Route::get('/', [FrontendController::class, 'index'])
+    ->name('frontend.index');
+Route::get('/contato', [ContactController::class, 'index'])
+    ->name('frontend.contact.index');
+Route::get('/faq', [FaqController::class, 'index'])
+    ->name('frontend.faq.index');
+Route::get('/fale-conosco', [ContactUsController::class, 'index'])
+    ->name('frontend.contactUs.index');
+Route::post('/fale-conosco', [ContactUsController::class, 'sendMessage'])
+    ->name('frontend.contactUs.sendMessage');
 ```
 
 ### Model
@@ -132,4 +137,17 @@ $articleCategory = Category::first();
 
 ```
 about-us.blade.php
+```
+
+### Helpers
+
+Os helpers, devem ser escritos em snake_case
+
+```php
+if (!function_exists('only_numbers')) {
+    function only_numbers($string)
+    {
+        return preg_replace('/[^0-9]/', '', $string);
+    }
+}
 ```
