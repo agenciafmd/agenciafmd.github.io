@@ -1,37 +1,135 @@
-## Welcome to GitHub Pages
+# Backend
 
-You can use the [editor on GitHub](https://github.com/agenciafmd/agenciafmd.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Instruções para que o backend funcione como um só
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**Importante:**
+Os itens marcados com :warning: não seguem a convenção do laravel
 
-### Markdown
+## Como nomear
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Controller
 
-```markdown
-Syntax highlighted code block
+Singular acompanhada do sufixo `Controller`
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+ArticleController
+LeadController 
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Rota
 
-### Jekyll Themes
+:warning: Grande parte das nossas rotas são compostas de `prefixo.controller.método`
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/agenciafmd/agenciafmd.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Prefixo `frontend` para o pacote frontend
+- Prefixo `admix` para os pacotes do admix
+- Prefixo `api.frontend` para os endpoints utilizados no frontend
+- Prefixo `api.admix` para os endpoints utilizados no admix
+- Utilizar o nome da controller (camelCase)
+- Utilizar o nome do método (camelCase)
+- Para palavras compostas, utilizar camelCase
 
-### Support or Contact
+Obs. Somente a rota da home, deveremos omitir o metodo index.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+frontend.index
+frontend.contact.index
+frontend.faq.index
+frontend.contactUs.show
+frontend.contactUs.sendMessage
+```
+
+### Model
+
+Singular
+
+```
+Article.php
+Lead.php
+```
+
+### Relacionamentos
+
+**hasOne / belongsTo**
+
+Singular e com o mesmo nome da model relacionada
+
+```php
+public function type()
+{
+    return $this->belongsTo(Type::class);
+}
+
+public function brand()
+{
+    return $this->belongsTo(Brand::class);
+}
+```
+
+**Demais relacionamentos** 
+
+Plural e com o mesmo nome da model relacionada 
+
+```
+public function vehicles()
+{
+    return $this->hasMany(Vehicle::class);
+}
+```
+
+### Tabelas
+
+A tabela deve ter o nome no plural de sua model.
+Procure utilizar somente uma palavra
+
+Model | Tabela 
+--- | ---
+User | users 
+Lead | leads 
+ArticleCategory | article_categories 
+
+Quando a tabela for do tipo `pivot`, 
+o nome será o nome da model em ordem alfabética
+
+Model | Tabela 
+--- | ---
+UserPost | post_user 
+UserYear | user_year
+
+As colunas da tabela, deverão estar em snake_case.
+Dê preferência para uma palavra e singular 
+
+```
+is_active
+name
+description
+published_at
+```
+
+### Variáveis
+
+Plural para collection e array
+
+```php
+$users = collect(['Irineu', 'Carlos', 'Tarsisio', 'Eduardo']);
+```
+
+Singular para valores simples
+
+```php
+$article = Article::first();
+```
+
+camelCase para palavras compostas
+
+```php
+$articleCategories = Category::get();
+$articleCategory = Category::first();
+```
+
+### Blades 
+
+:warning: Os nomes dos arquivos deverão estar slugados, em inglês e com a extensão `.blade.php`
+
+```
+about-us.blade.php
+```

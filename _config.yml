@@ -1,8 +1,5 @@
 title: Agência F&MD
-tagline: Boas Práticas
-logo:
-description: Manual de boas práticas com exemplos.
+description: Manual de boas práticas e exemplos.
 show_downloads: false
 google_analytics:
-#theme: jekyll-theme-minimal
-remote_theme: pmarsceill/just-the-docs
+theme: jekyll-theme-slate
