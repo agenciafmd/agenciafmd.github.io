@@ -6,6 +6,49 @@ nav_order: 1
 
 <p align="center"><a href="https://fmd.ag?utm_source=github" target="_blank"><img src="https://raw.githubusercontent.com/agenciafmd/admix/v10/docs/fmd.png" alt="Logo da F&MD"></a></p>
 
+## Contribuindo
+
+### Instalando o Jekyll
+
+```bash
+sudo apt-get install ruby-full build-essential zlib1g-dev
+```
+
+Para **zsh**, adicione ao `.zshrc`:
+
+```bash
+mkdir "~/.gems"
+echo '# Install Ruby Gems to ~/gems' >> ~/.zshrc
+echo 'export GEM_HOME="$HOME/gems"' >> ~/.zshrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Para **bash** (terminal normal), adicione ao `.bashrc`:
+
+```bash
+mkdir "~/.gems"
+echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Instale o bundler:
+
+```bash
+gem install jekyll bundler
+```
+
+Agora vamos até o diretório do projeto e subimos o servidor:
+
+```bash
+cd /caminho/do/projeto
+bundle exec jekyll serve --livereload
+```
+
+---
+
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 
 If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^1] And you will be able to deploy your local build to a different platform than GitHub Pages.
