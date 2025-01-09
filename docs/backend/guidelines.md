@@ -6,7 +6,7 @@ parent: Backend
 # Guidelines
 {: .no_toc }
 
-## Table of contents
+## Conteúdo
 {: .no_toc .text-delta }
 
 1. TOC
@@ -16,7 +16,8 @@ parent: Backend
 
 ## Por quê?
 
-Como o Laravel no fornece muitas *features* implícitas e/ou convencionadas, temos como objetivo, dar continuidade nesse fluxo.
+Como o Laravel fornece muitas *features* implícitas e/ou convencionadas, temos como objetivo, dar continuidade nesse
+fluxo.
 
 Se existir algum jeito documentado de se chegar em algum lugar, faça deste jeito.
 
