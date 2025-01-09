@@ -5,15 +5,13 @@ nav_order: 2
 ---
 
 # PHP 8.1
-
 {: .no_toc }
 
 ## Conteúdo
-
 {: .no_toc .text-delta }
 
 1. TOC
-   {:toc}
+{:toc}
 
 ---
 
@@ -28,7 +26,7 @@ git clone git@gitlab.com:mixdinternet/prever-ampaz-site.git ~/code/ampaz
 cd ~/code/ampaz
 ```
 
-## Instalando o sail
+## Instalando o Sail
 
 Vamos instalar o sail no projeto usando a imagem do composer.
 

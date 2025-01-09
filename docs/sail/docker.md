@@ -5,15 +5,13 @@ nav_order: 1
 ---
 
 # Docker
-
 {: .no_toc }
 
 ## Conteúdo
-
 {: .no_toc .text-delta }
 
 1. TOC
-   {:toc}
+{:toc}
 
 ---
 
@@ -116,8 +114,9 @@ alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 {: .important-title }
 > Importante
-> Para garantir que o comando esteja sempre disponível, você pode adicionar ao arquivo de configuração como ~/.zshrc
-> ou ~/.bashrc, e depois reiniciar o shell.
+> 
+> Para garantir que o comando esteja sempre disponível, você pode adicionar ao arquivo de configuração como `~/.zshrc`
+> ou `~/.bashrc`, e depois reiniciar o shell.
 
 ### Builda/Rebuilda as imagens do Docker
 
@@ -125,13 +124,13 @@ alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 sail build --no-cache
 ```
 
-### Inicia os contêineres
+### Iniciando os contêineres
 
 ```bash
 sail up -d
 ```
 
-### Para os contêineres
+### Parando os contêineres
 
 ```bash
 sail stop
