@@ -17,7 +17,7 @@ sudo apt-get install ruby-full build-essential zlib1g-dev
 Para **zsh**, adicione ao `.zshrc`:
 
 ```bash
-mkdir "~/gems"
+mkdir ~/gems
 echo '# Install Ruby Gems to ~/gems' >> ~/.zshrc
 echo 'export GEM_HOME="$HOME/gems"' >> ~/.zshrc
 echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.zshrc
@@ -27,7 +27,7 @@ source ~/.zshrc
 Para **bash** (terminal normal), adicione ao `.bashrc`:
 
 ```bash
-mkdir "~/gems"
+mkdir ~/gems
 echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
 echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
 echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
@@ -44,5 +44,6 @@ Agora vamos até o diretório do projeto e subimos o servidor:
 
 ```bash
 cd /caminho/do/projeto
+bundle install
 bundle exec jekyll serve --livereload
 ```
