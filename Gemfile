@@ -11,3 +11,5 @@ gem "jekyll-include-cache", group: :jekyll_plugins
 gem "jekyll-sitemap", group: :jekyll_plugins
 
 gem "html-proofer", "~> 4.0", :group => :development
+
+ruby file: ".ruby-version"
