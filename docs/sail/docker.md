@@ -92,6 +92,18 @@ Baixe e instale o [Docker Desktop for Mac](https://docs.docker.com/desktop/mac/i
 
 Baixe e instale o [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/install/){:target="_blank"}.
 
+## Integração com a IDE
+
+Para facilitar o desenvolvimento, é possível configurar o Docker para iniciar automaticamente com a IDE.
+
+Para isso, vamos em `File > Settings > Tools > Startup Tasks` e escolhemos o `Sail`.
+
+![sail ide](/assets/images/sail-ide.gif)
+
+Caso não tenha o `Sail` disponível, você pode criar um novo `Shell Script` conforme o exemplo abaixo:
+
+![sail ide](/assets/images/sail-shell-script.png)
+
 ## Comandos úteis do Docker
 
 ### Desligar todos os contêineres em execução:
