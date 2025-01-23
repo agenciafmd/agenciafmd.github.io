@@ -92,6 +92,19 @@ Baixe e instale o [Docker Desktop for Mac](https://docs.docker.com/desktop/mac/i
 
 Baixe e instale o [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/install/){:target="_blank"}.
 
+## Criando o projeto
+
+Para criar um novo projeto, use o Sail. Assim não precisamos criar o ambiente localmente.
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer create-project agenciafmd/starter:v11.x-dev nome-do-projeto --ignore-platform-reqs
+```
+
 ## Instalando o projeto
 
 Quando clonamos o projeto, o Laravel Sail já está configurado. Para instalar as dependências, basta rodar o comando:
@@ -117,6 +130,14 @@ Caso não tenha o `Sail` disponível, você pode criar um novo `Shell Script` co
 
 ![sail ide](/assets/images/sail-shell-script.png)
 
+Agora é possível administrar o Docker diretamente da IDE.
+
+Use o atalho `Alt + 8` para abrir a janela de `Services`
+
+Se for preciso, abra o terminal dentro do seu container.
+
+![docker terminal](/assets/images/docker-terminal.png)
+
 ## Comandos úteis do Docker
 
 ### Desligar todos os contêineres em execução:
@@ -131,7 +152,7 @@ docker compose down -v
 
 [https://laravel.com/docs/11.x/sail](https://laravel.com/docs/11.x/sail){:target="_blank"}
 
-### Cria o alias para o Sail
+### Criando o `alias` para o Sail
 
 ```bash
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
