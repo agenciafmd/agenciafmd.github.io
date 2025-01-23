@@ -47,3 +47,11 @@ cd /caminho/do/projeto
 bundle install
 bundle exec jekyll serve --livereload
 ```
+
+### Erros comuns
+
+Como corrigir "Your Ruby version is x.x.x, but your Gemfile specified x.x.x" enquanto o servidor inicia?
+    
+1. Exclua a pasta `.jekyll-cache` 
+2. Rode o comando `gem install jekyll bundler` novamente
+3. Rode o comando `bundle exec jekyll serve --livereload` novamente
