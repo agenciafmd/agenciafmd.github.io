@@ -92,6 +92,19 @@ Baixe e instale o [Docker Desktop for Mac](https://docs.docker.com/desktop/mac/i
 
 Baixe e instale o [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/install/){:target="_blank"}.
 
+## Instalando o projeto
+
+Quando clonamos o projeto, o Laravel Sail já está configurado. Para instalar as dependências, basta rodar o comando:
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
 ## Integração com a IDE
 
 Para facilitar o desenvolvimento, é possível configurar o Docker para iniciar automaticamente com a IDE.
